@@ -1,0 +1,16 @@
+name: test workflow
+on: push
+jobs:
+  test:
+    runs-on: ubuntu-20.04  #node is preinstalled w this runner.  see github hosted runners --> runner for details abt preinstalled SW
+    steps:
+      - name: Get Project Code
+      - uses: actions/checkout@v3
+    # - name: Install NodeJS
+    # - uses: actions/setup-node@v3
+    #   with:
+    #     node-version: 16
+      - name: Install Deps
+        run: npm ci
+      - name: Run Tests
+        run: npm test
