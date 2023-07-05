@@ -1,0 +1,17 @@
+.help-box {
+  padding: 1rem;
+  padding-bottom: 0;
+  margin: 1;
+  flex: 1;
+}
+.help-box:not(:last-child) {
+    border-right: 1px solid black;
+}
+
+.help-box h2 {
+  color: #b1ffff;
+  font-size: 1.05rem;
+}
+.help-box p {
+    margin-bottom: 0;
+}
