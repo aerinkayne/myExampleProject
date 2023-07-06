@@ -9,7 +9,7 @@ jobs:
       - name: Install Deps
         run: npm ci
       - name: Run Lint
-        run: npm lint
+        run: npm run lint
   run-tests:
     needs: run-lint
     runs-on: ubuntu-20.04
@@ -19,7 +19,7 @@ jobs:
       - name: Install Deps
         run: npm ci
       - name: Run Tests
-        run: npm test
+        run: npm run test
   run-deploy:
     needs: run-tests
     runs-on: ubuntu-20.04
