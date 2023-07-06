@@ -1,7 +1,7 @@
 name: output workflow
 on: workflow_dispatch
 jobs:
-  meta info test:
+  meta-info-test:
     runs-on: ubuntu-20.04
     steps:
       - name: output github wf context info
