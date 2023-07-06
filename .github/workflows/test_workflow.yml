@@ -1,5 +1,5 @@
 name: test and deploy
-on: [workflow_dispatch, push]
+on: [workflow_dispatch]
 jobs:
   run-lint:
     runs-on: ubuntu-20.04
@@ -10,24 +10,24 @@ jobs:
         run: npm ci
       - name: Run Lint
         run: npm run lint
-  run-tests:
-    needs: run-lint
-    runs-on: ubuntu-20.04
-    steps:
-      - name: Get Project Code
-        uses: actions/checkout@v3
-      - name: Install Deps
-        run: npm ci
+  # run-tests:  NOTE: example to show one vs mult jobs
+  #   needs: run-lint
+  #   runs-on: ubuntu-20.04
+  #   steps:
+  #     - name: Get Project Code
+  #       uses: actions/checkout@v3
+  #     - name: Install Deps
+  #       run: npm ci
       - name: Run Tests
         run: npm run test
-  run-deploy:
-    needs: run-tests
-    runs-on: ubuntu-20.04
-    steps:
-      - name: Get Project Code
-        uses: actions/checkout@v3
-      - name: Install Deps
-        run: npm ci
+  # run-deploy:
+  #   needs: run-tests
+  #   runs-on: ubuntu-20.04
+  #   steps:
+  #     - name: Get Project Code
+  #       uses: actions/checkout@v3
+  #     - name: Install Deps
+  #       run: npm ci
       - name: build step
         run: npm run build
       - name: deploy step
