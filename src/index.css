@@ -3,13 +3,11 @@
 }
 
 html {
-  font-family: dosis, sans-serif;
-  letter-spacing: 1px;
-  line-height: 1.4;
+  font-family: sans-serif;
 }
 
 body {
-  background-color: #dce2e7;
+  background-color: #798080;
   color: #292d2d;
   text-align: center;
 }
@@ -35,24 +33,19 @@ header img {
 
 main {
   margin: 2rem auto;
-  padding: 2em 1em;
+  padding: 2rem;
   max-width: 50rem;
-  background-color: #20242d;
+  background-color: #292d2d;
   border-radius: 8px;
-  color: rgb(192, 201, 206);
+  color: white;
 }
 
 button {
   font: inherit;
-  letter-spacing: 1px;
-  font-weight: bolder;
   cursor: pointer;
   background-color: #f8bd47;
   color: #292d2d;
-  padding: 0.25em 0.5em;
+  padding: 0.25rem 1rem;
   border-radius: 4px;
-  border: 2px outset #f8bd47;
-}
-#help-btn {
-    width: 120px;
+  border: 1px solid #f8bd47;
 }

@@ -1,8 +1,8 @@
 name: output workflow
-on: workflow_dispatch
+on: [workflow_dispatch, issues]
 jobs:
   meta-info-test:
     runs-on: ubuntu-20.04
     steps:
-      - name: output github wf context info
-        run: echo "${{ toJSON(github) }}"
+      - name: output github event info
+        run: echo "${{ toJSON(github.event) }}"

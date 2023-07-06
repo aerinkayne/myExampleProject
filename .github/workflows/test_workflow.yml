@@ -1,7 +1,17 @@
 name: test and deploy
-on: workflow_dispatch
+on: [workflow_dispatch, push]
 jobs:
+  run-lint:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Get Project Code
+        uses: actions/checkout@v3
+      - name: Install Deps
+        run: npm ci
+      - name: Run Lint
+        run: npm lint
   run-tests:
+    needs: run-lint
     runs-on: ubuntu-20.04
     steps:
       - name: Get Project Code
@@ -10,15 +20,15 @@ jobs:
         run: npm ci
       - name: Run Tests
         run: npm test
-  # run deploy:
-  #   needs: run tests  # [job1, job2] arr synt for multiple
-  #   runs-on: ubuntu-20.04
-  #   steps:
-  #     - name: Get Project Code
-  #       uses: actions/checkout@v3
-  #     - name: Install Deps
-  #       run: npm ci
-  #     - name: build step
-  #       run: npm run build
-  #     - name: deploy step
-  #       run: echo "test deploy step"
+  run-deploy:
+    needs: run-tests
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Get Project Code
+        uses: actions/checkout@v3
+      - name: Install Deps
+        run: npm ci
+      - name: build step
+        run: npm run build
+      - name: deploy step
+        run: echo "test deploy step"
