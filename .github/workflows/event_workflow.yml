@@ -1,17 +1,17 @@
 name: event workflow
 on:
-  pull_request:
-    types:
-      - opened
+  # pull_request:
+  #   types:
+  #     - opened
   workflow_dispatch:
-  push:
-    branches:
-      - master
-      - 'dev-*'
-    paths-ignore:
-      - '.github/workflows/*'
+  # push:
+  #   branches:
+  #     - master
+  #     - 'dev-*'
+  #   paths-ignore:
+  #     - '.github/workflows/*'
 jobs:
-  test-deploy:
+  test-event:
     runs-on: ubuntu-20.04
     steps:
       - name: event data

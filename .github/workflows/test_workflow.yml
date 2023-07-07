@@ -10,7 +10,7 @@ jobs:
         run: npm ci
       - name: Run Lint
         run: npm run lint
-  # run-tests:  NOTE: example to show one vs mult jobs
+  # run-tests:  NOTE: example to show one vs mult jobs, sequential jobs
   #   needs: run-lint
   #   runs-on: ubuntu-20.04
   #   steps:
