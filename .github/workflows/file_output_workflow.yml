@@ -1,4 +1,4 @@
-name: Artifact Tests
+name: Artifact and output Tests
 on:
   push:
     branches:
@@ -18,6 +18,8 @@ jobs:
   build:
     needs: lint-test
     runs-on: ubuntu-20.04
+    outputs:
+      js-file: ${{ steps.publish.outputs.js-file }}
     steps:
       - name: Get code
         uses: actions/checkout@v3
@@ -25,15 +27,25 @@ jobs:
         run: npm ci
       - name: Build website
         run: npm run build
+      - name: get js file name
+        id: publish
+        run: find dist/assets/*.js -type f -execdir echo 'js-file={}' >> $GITHUB_OUTPUT ';'
       - name: upload-artifact
         uses: actions/upload-artifact@v3
         with:
           name: build-files
           path: dist
-
   deploy:
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
+      - name: get-dist
+        uses: actions/download-artifact@v3
+        with:
+          name: build-files
+      - name: show artifacts
+        run: ls
+      - name: get output
+        run: echo "${{ needs.build.outputs.js-file }}"
       - name: Deploy
         run: echo "Deploying..."
