@@ -7,11 +7,18 @@ on:
         required: false
         default: dist
         type: string
-      # secrets:
-      #   secret-key:
-      #     required: false
+    # secrets:
+    #   secret-key:
+    #     required: false
+    outputs:
+      results:
+        description: operation result
+        value:
+
 jobs:
   deploy-job:
+    outputs:
+      deploy-result: ${{ steps.set-result.outputs.step-result }}
     runs-on: ubuntu-latest
     steps:
       - name: get files
@@ -22,3 +29,6 @@ jobs:
         run: |
           echo "downloaded parent artifact files: "
           ls
+      - name: set results value
+        id: set-result
+        run: echo "step-result=success" >> $GITHUB_OUTPUT
