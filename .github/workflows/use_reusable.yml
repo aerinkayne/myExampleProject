@@ -71,6 +71,12 @@ jobs:
       artifact-name: dist-files
     # secrets:
     #   secret-key: ${{ secrets.secret-key }}
+  print-result:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: print output from reusable FW
+        run: echo "${{ needs.deploy.outputs.result }}"
   report:
     needs: [lint, deploy]
     if: failure()

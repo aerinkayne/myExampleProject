@@ -11,9 +11,9 @@ on:
     #   secret-key:
     #     required: false
     outputs:
-      results:
-        description: operation result
-        value:
+      result:
+        description: deploy operation result
+        value: ${{ jobs.deploy-job.outputs.deploy-result }}
 
 jobs:
   deploy-job:
