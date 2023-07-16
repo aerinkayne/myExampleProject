@@ -1,5 +1,15 @@
 name: 'Example AWS S3 Deploy'
 description: 'Deploy a static website to AWS S3'
+inputs:
+  bucket:
+    description: 'S3 bucket name'
+    required: true
+  bucket-region:
+    description: 'S3 bucket region'
+    required: true
+  dist-folder:
+    description: folder containing files to deploy
+    required: true
 runs:
   using: 'node16'
   main: 'main.js'
