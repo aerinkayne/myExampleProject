@@ -68,7 +68,7 @@ jobs:
       - name: Output contents
         run: |
           ls
-          echo "workspace: ${{ GITHUB_WORKSPACE }}"
+          echo "workspace: ${{ github.workspace }}"
       # - name: Deploy site
       #   uses: ./.github/actions/deploy-s3-javascript
       #     env:
