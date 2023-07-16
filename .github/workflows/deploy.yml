@@ -59,6 +59,7 @@ jobs:
         run: |
           cd .github/actions/deploy-s3-javascript
           npm ci
+          cd ../../../
       - name: Get build artifacts
         uses: actions/download-artifact@v3
         with:
