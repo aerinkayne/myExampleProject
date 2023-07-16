@@ -55,10 +55,11 @@ jobs:
     steps:
       - name: Get code
         uses: actions/checkout@v3
-      # - name: Install JS GHA Dependencies
-      #   run: |
-      #     cd .github/actions/deploy-s3-javascript
-      #     npm ci
+      - name: Install JS GHA Dependencies
+        run: |
+          cd .github/actions/deploy-s3-javascript
+          npm ci
+          ls
       - name: Get build artifacts
         uses: actions/download-artifact@v3
         with:
@@ -72,8 +73,8 @@ jobs:
       #       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       #       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       #     with:
-      #       bucket: 'bucket name'
-      #       bucket-region: 'us-east-1'
+      #       bucket: bucket name
+      #       bucket-region: us-east-1
       #       dist-folder: ./dist
   information:
     runs-on: ubuntu-latest
@@ -87,6 +88,6 @@ jobs:
       - name: Run custom JS Action
         uses: ./.github/actions/deploy-s3-javascript
         with:
-          bucket: 'bucket name'
-          bucket-region: 'us-east-1'
+          bucket: bucket name
+          bucket-region: us-east-1
           dist-folder: ./dist
