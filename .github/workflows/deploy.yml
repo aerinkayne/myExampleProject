@@ -55,11 +55,10 @@ jobs:
     steps:
       - name: Get code
         uses: actions/checkout@v3
-      - name: Install JS GHA Dependencies
-        run: |
-          cd .github/actions/deploy-s3-javascript
-          npm ci
-          cd ../../../
+      # - name: Install JS GHA Dependencies
+      #   run: |
+      #     cd .github/actions/deploy-s3-javascript
+      #     npm ci
       - name: Get build artifacts
         uses: actions/download-artifact@v3
         with:
@@ -76,3 +75,14 @@ jobs:
       #       bucket: 'bucket name'
       #       bucket-region: 'us-east-1'
       #       dist-folder: ./dist
+  information:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Code
+        uses: actions/checkout@v3
+      - name: Install JS GHA Dependencies
+        run: |
+          cd .github/actions/deploy-s3-javascript
+          npm ci
+      - name: Run custom JS Action
+        uses: ./.github/actions/deploy-s3-javascript
