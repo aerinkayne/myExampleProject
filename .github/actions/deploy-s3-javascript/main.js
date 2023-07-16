@@ -11,6 +11,11 @@ function run() {
     const s3uri = `s3://${bucket}`;
     //exec.exec(`aws s3 sync ${distFolder} ${s3uri} --region ${bucketRegion}`);
 
+
+
+    const url = `http://${bucket}.s3-website-${bucketRegion}.amazonaws.com`;
+    core.setOutput('web-url', url);
+
     core.notice('This will be written to the GHA workflow log');
     core.notice(`got inputs: ${bucket} ${bucketRegion} ${distFolder}`);
 }

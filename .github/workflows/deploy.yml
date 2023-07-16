@@ -68,6 +68,7 @@ jobs:
       - name: Output contents
         run: ls
       - name: Deploy site
+        id: deploy-step
         uses: ./.github/actions/deploy-s3-javascript
         # env:
         #   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -76,6 +77,10 @@ jobs:
           bucket: bucket name
           bucket-region: us-east-1
           dist-folder: ./dist
+      - name: Output Info
+        run: |
+          echo "URL: ${{ steps.deploy-step.outputs.web-url }}"
+
   # information:
   #   runs-on: ubuntu-latest
   #   steps:
